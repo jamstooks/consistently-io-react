@@ -2,10 +2,9 @@ import { connect } from "react-redux";
 import Settings from "../components/Settings";
 import * as actions from "../actions/integrations";
 
-
 const mapStateToProps = state => ({
   integrations: state.integrations,
-  current: state.current,
+  current: state.current
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -14,12 +14,17 @@ let expectedFailureActions = [
 ];
 
 testFetch(
-  actions.getList, [],
+  actions.getList,
+  [],
   expectedSuccessActions,
   expectedFailureActions,
   mockSettings,
-  () => { window.repo = { github_id: "1" } },
-  () => { window.repo = undefined }
+  () => {
+    window.repo = { github_id: "1" };
+  },
+  () => {
+    window.repo = undefined;
+  }
 );
 
 // actions.getDetail
@@ -34,12 +39,17 @@ expectedFailureActions = [
 ];
 
 testFetch(
-  actions.getDetail, [1],
+  actions.getDetail,
+  [1],
   expectedSuccessActions,
   expectedFailureActions,
   mockIntegration,
-  () => { window.repo = { github_id: "1" } },
-  () => { window.repo = undefined }
+  () => {
+    window.repo = { github_id: "1" };
+  },
+  () => {
+    window.repo = undefined;
+  }
 );
 
 // actions.updateIntegration
@@ -59,14 +69,18 @@ expectedFailureActions = [
 ];
 
 testFetch(
-  actions.updateIntegration, [1],
+  actions.updateIntegration,
+  [1],
   expectedSuccessActions,
   expectedFailureActions,
   updatedIntegration,
-  () => { window.repo = { github_id: "1" } },
-  () => { window.repo = undefined }
+  () => {
+    window.repo = { github_id: "1" };
+  },
+  () => {
+    window.repo = undefined;
+  }
 );
-
 
 it("deselectIntegration should create DESELECT_INTEGRATION action", () => {
   expect(actions.deselectIntegration()).toEqual({
@@ -75,9 +89,9 @@ it("deselectIntegration should create DESELECT_INTEGRATION action", () => {
 });
 
 it("updateFormValue should create UPDATE_FORM_VALUE action", () => {
-  expect(actions.updateFormValue('key', 'value')).toEqual({
+  expect(actions.updateFormValue("key", "value")).toEqual({
     type: "UPDATE_FORM_VALUE",
-    key: 'key',
-    value: 'value'
+    key: "key",
+    value: "value"
   });
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 
 import Settings from "./containers/Settings";
 import rootReducer from "./reducers/integrations";
-
 
 const loggerMiddleware = createLogger();
 
@@ -19,7 +18,7 @@ class SettingsApp extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Settings/>
+        <Settings />
       </Provider>
     );
   }

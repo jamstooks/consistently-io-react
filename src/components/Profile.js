@@ -3,25 +3,22 @@ import PropTypes from "prop-types";
 
 import StatusBox from "./StatusBox";
 
-
 class Profile extends React.Component {
-
   componentDidMount() {
     this.props.getProfile();
   }
 
-  toggleRepo = (repo) => () => {
+  toggleRepo = repo => () => {
     this.props.toggleRepo(repo.github_id, !repo.is_active);
-  }
+  };
 
   render() {
-
     if (this.props.isFetching) {
-      return (<p className="loading-block">Loading...</p>);
+      return <p className="loading-block">Loading...</p>;
     }
 
     if (this.props.error !== null && this.props.error !== undefined) {
-      return (<p>Error! [{this.props.error}]</p>);
+      return <p>Error! [{this.props.error}]</p>;
     }
 
     let rows = [];
@@ -29,19 +26,12 @@ class Profile extends React.Component {
     if (this.props.repoList !== null && this.props.repoList !== undefined) {
       this.props.repoList.forEach(r => {
         rows.push(
-          <StatusBox
-            repo={r}
-            isFetching={false}
-            toggle={this.toggleRepo(r)}>
-          </StatusBox>
+          <StatusBox repo={r} isFetching={false} toggle={this.toggleRepo(r)} />
         );
       });
-      return (
-        <div>{rows}</div>
-      );
-    }
-    else {
-      return (<p>No Repos Found</p>);
+      return <div>{rows}</div>;
+    } else {
+      return <p>No Repos Found</p>;
     }
   }
 }
@@ -70,7 +60,7 @@ Profile.propTypes = {
   /**
    * Error Code
    */
-  error: PropTypes.string,
+  error: PropTypes.string
 };
 
 export default Profile;

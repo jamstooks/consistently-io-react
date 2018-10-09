@@ -7,7 +7,7 @@ const mockStore = configureMockStore(middleware);
 
 /**
  * Generic method to run a test for a standard getEndpoint method
- * 
+ *
  * `params` is an array that will be passed as paremeters ot the method
  * `mockData` is the data that should be returned after a good request
  */
@@ -18,8 +18,8 @@ export const testFetch = (
   expectedFailureActions,
   mockData,
   beforeMethod = null,
-  afterMethod = null) => {
-
+  afterMethod = null
+) => {
   describe("get action", () => {
     afterEach(() => {
       fetchMock.reset();
@@ -33,7 +33,7 @@ export const testFetch = (
       if (beforeMethod !== null) {
         beforeMethod();
       }
-    })
+    });
 
     it(method.name + " success creates the right actions", () => {
       fetchMock.mock("*", mockData);
@@ -46,7 +46,7 @@ export const testFetch = (
     });
 
     it(method.name + " failure creates the right actions", () => {
-      fetchMock.mock('*', {
+      fetchMock.mock("*", {
         status: 500,
         body: JSON.stringify({
           someJson: "someval"
@@ -56,12 +56,14 @@ export const testFetch = (
       const store = mockStore({});
       return store.dispatch(method(...params)).then(() => {
         expect(store.getActions()[0]).toEqual(expectedFailureActions[0]);
-        expect(store.getActions()[1].type).toEqual(expectedFailureActions[1].type);
+        expect(store.getActions()[1].type).toEqual(
+          expectedFailureActions[1].type
+        );
       });
     });
 
     it(method.name + " failure creates the right actions", () => {
-      fetchMock.mock('*', {
+      fetchMock.mock("*", {
         status: 400,
         body: JSON.stringify({
           someJson: "someval"
@@ -71,9 +73,10 @@ export const testFetch = (
       const store = mockStore({});
       return store.dispatch(method(...params)).then(() => {
         expect(store.getActions()[0]).toEqual(expectedFailureActions[0]);
-        expect(store.getActions()[1].type).toEqual(expectedFailureActions[1].type);
+        expect(store.getActions()[1].type).toEqual(
+          expectedFailureActions[1].type
+        );
       });
     });
-
   });
-}
+};

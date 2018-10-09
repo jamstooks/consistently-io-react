@@ -1,5 +1,5 @@
 import integrations from "./integrations";
-import { mockSettings, mockIntegration } from "../testUtils/mockData"
+import { mockSettings, mockIntegration } from "../testUtils/mockData";
 
 let BASE_STATE = {
   integrations: {
@@ -145,7 +145,6 @@ describe("integrations reducer", () => {
   });
 
   it("should handle UPDATE_SUCCESS", () => {
-
     // test current
     expect(
       integrations(FORM_STATE, {
@@ -199,10 +198,9 @@ describe("integrations reducer", () => {
     expect(
       integrations(FORM_STATE, {
         type: "UPDATE_FORM_VALUE",
-        key: 'one',
+        key: "one",
         value: 2
       }).current.form.values
     ).toEqual({ one: 2 });
   });
-
 });

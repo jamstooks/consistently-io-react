@@ -8,7 +8,7 @@ class IntegrationForm extends React.Component {
     let type = "text";
     if (key.includes("url")) {
       type = "url";
-    } else if (key.includes("is_active")) {
+    } else if (key.includes("is_") || key.includes("use_")) {
       type = "checkbox";
     } else if (key === "deployment_delay") {
       type = "number";
